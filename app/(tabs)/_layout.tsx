@@ -9,13 +9,16 @@ export default function TabLayout() {
       screenOptions={{
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
-        headerShown: true,
+        headerShown: false,
+        tabBarStyle: {
+          display: "none",
+        },
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          headerShown: true,
+          headerShown: false,
         }}
       />
     </Tabs>

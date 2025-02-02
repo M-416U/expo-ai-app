@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, Button } from "react-native";
 import { supabase } from "../../lib/supabaseClient";
 import { useRouter } from "expo-router";
-import Dialog from "../components/Dialog";
+import DialogComponent from "../components/Dialog";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -27,9 +27,12 @@ const Register = () => {
   return (
     <View className="flex-1 justify-center items-center p-4">
       <Text className="text-2xl font-bold mb-4">Register</Text>
-      <Dialog visible={modalVisible} onClose={() => setModalVisible(false)}>
-        <Text>{error}</Text>
-      </Dialog>
+      <DialogComponent
+        visible={modalVisible}
+        title="Registration Error"
+        message={error}
+        onClose={() => setModalVisible(false)}
+      />
       <TextInput
         className="border p-2 mb-4 w-full"
         placeholder="Email"

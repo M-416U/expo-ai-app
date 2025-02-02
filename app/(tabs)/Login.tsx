@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { View, Text, TextInput, Button } from "react-native";
 import { supabase } from "../../lib/supabaseClient";
 import { useRouter } from "expo-router";
-import Dialog from "../components/Dialog";
+import DialogComponent from "../components/Dialog";
+import { Ionicons } from "@expo/vector-icons";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -27,9 +28,13 @@ const Login = () => {
   return (
     <View className="flex-1 justify-center items-center p-4">
       <Text className="text-2xl font-bold mb-4">Login</Text>
-      <Dialog visible={modalVisible} onClose={() => setModalVisible(false)}>
-        <Text>{error}</Text>
-      </Dialog>
+      <DialogComponent
+        visible={modalVisible}
+        title="Login Error"
+        message={error}
+        onClose={() => setModalVisible(false)}
+        icon={<Ionicons name="warning-outline" size={40} color="red" />}
+      />
       <TextInput
         className="border p-2 mb-4 w-full"
         placeholder="Email"
